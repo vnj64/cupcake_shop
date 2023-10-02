@@ -251,6 +251,8 @@ body {
     vertical-align: middle;
     white-space: nowrap;
     position: relative;
+    display: flex;
+    gap: 15px;
 }
 
 .container-1 input#searchWord{
@@ -258,9 +260,9 @@ body {
     height: 50px;
     background: #a3a3a3;
     border: none;
-    font-size: 10pt;
+    font-size: 24px;
     float: left;
-    color: #ffffff;
+    color: #000;
     padding-left: 45px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;

@@ -1,30 +1,13 @@
 <#import "blocks/template.ftlh" as t>
 <@t.template user>
     <div style="display: flex; margin-bottom: 100px; justify-content: space-between; width: 90vw">
-
-    <form method="get" action="/">
-        <div style="display: flex">
-            <div style="text-align: center">Поиск игр</div>
-            <div class="form-group col-md-2">
-                <label for="searchArea">Площадка</label>
-                <select id="searchArea" required name="area" class="form-control">
-                    <option value="Steam">Steam</option>
-                    <option value="Origin">Origin</option>
-                    <option value="EpicGames">EpicGames</option>
-                    <option value="GOG">GOG</option>
-                    <option value="Gamersgate">Gamersgate</option>
-                    <option value="Battle.net">Battle.net</option>
-                </select>
-            </div>
-        </div>
-    </form>
-        <div class="box">
+        <form method="get" action="/">
             <div class="container-1">
-                <label for="searchWord">Поиск по ключам</label>
-                <input class="searchWord" type="text" name="searchWord" id="searchWord" placeholder="Search..."/>
+                <label for="searchWord"><b>Поиск по играм</b></label>
+                <input type="text" name="searchWord" class="searchWord" id="searchWord">
+                <button type="submit" class="login-button">Поиск</button>
             </div>
-            <button type="submit" class="login-button">Поиск</button>
-        </div>
+        </form>
     </div>
 
 

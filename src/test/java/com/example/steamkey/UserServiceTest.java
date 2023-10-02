@@ -29,26 +29,6 @@ class UserServiceTest {
         userService = new UserService(userRepository, passwordEncoder);
     }
 
-//    @Test
-//    void testCreateUser_UserDoesNotExist() {
-//        User user = new User();
-//        user.setEmail("test@example.com");
-//        user.setPassword("password");
-//
-//        when(userRepository.findByEmail(user.getEmail())).thenReturn(null);
-//        when(passwordEncoder.encode(user.getPassword())).thenReturn("encodedPassword");
-//
-//        boolean result = userService.createUser(user);
-//
-//        assertTrue(result);
-//        assertTrue(user.isActive());
-//        assertEquals("encodedPassword", user.getPassword());
-//        assertEquals(Collections.singleton(Role.ROLE_USER), user.getRoles());
-//
-//        verify(userRepository, times(1)).findByEmail(user.getEmail());
-//        verify(passwordEncoder, times(1)).encode(user.getPassword());
-//        verify(userRepository, times(1)).save(user);
-//    }
 
     @Test
     void testCreateUser_UserExists() {

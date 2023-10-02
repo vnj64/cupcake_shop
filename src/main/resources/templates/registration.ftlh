@@ -13,7 +13,7 @@
         </div>
         <div class="form-group">
             <label for="phoneNumber" class="email__label">Номер телефона</label>
-            <input type="text" class="login__input" id="phoneNumber" required name="phoneNumber">
+            <input placeholder="+79998887766" type="text" class="login__input" id="phoneNumber" required name="phoneNumber">
         </div>
         <div class="form-group">
             <label for="password" class="password__label">Пароль</label>

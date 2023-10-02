@@ -1,10 +1,14 @@
 package com.example.steamkey.models;
 
 import com.example.steamkey.models.enums.Role;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.*;
 
 @Entity
@@ -13,9 +17,13 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull(message = "Почта - обязательный атрибут регистрации!")
     @Column(unique = true, updatable = false)
     private String email;
+    @NotNull
+    @Size(max=12, message = "Номер телефона должен быть менее 12 символов!")
     private String phoneNumber;
+    @NotNull
     private String name;
 
     @JoinColumn
