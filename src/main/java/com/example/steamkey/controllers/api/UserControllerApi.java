@@ -30,7 +30,7 @@ public class UserControllerApi {
 
             JwtBuilder jwtBuilder = Jwts.builder();
             jwtBuilder.setClaims(tokenData);
-            String key = "abc123"; // It's better to retrieve the key from a secure location like environment variables
+            String key = "StrongKey#1";
             String token = jwtBuilder.signWith(SignatureAlgorithm.HS512, key).compact();
             System.out.println(token);
 

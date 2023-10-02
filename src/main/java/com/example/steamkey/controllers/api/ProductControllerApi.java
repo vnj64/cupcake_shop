@@ -23,7 +23,7 @@ public class ProductControllerApi {
         return productService.listProducts(title);
     }
 
-    @GetMapping(value = "/api/product/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/api/v1/product/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Product> productInfoApi(@PathVariable Long id, Principal principal) {
         Product product = productService.getProductById(id);
         if (product == null) {
@@ -32,7 +32,7 @@ public class ProductControllerApi {
         return ResponseEntity.ok(product);
     }
 
-    @PostMapping("/api/product/create")
+    @PostMapping("/api/v1/product/create")
     public ResponseEntity<Void> createProductApi(@RequestBody Product product, Principal principal) {
         try {
             productService.saveProduct(principal, product);
@@ -42,12 +42,12 @@ public class ProductControllerApi {
         }
     }
 
-    @DeleteMapping("/api/product/delete/{id}")
+    @DeleteMapping("/api/v1/product/delete/{id}")
     public void deleteProduct(@PathVariable Long id, Principal principal) {
         productService.deleteProduct(productService.getUserByPrincipal(principal), id);
     }
 
-    @GetMapping("/api/my/products")
+    @GetMapping("/api/v1/my/products")
     public List<Product> userProductsApi(Principal principal) {
         User user = productService.getUserByPrincipal(principal);
         return user.getProducts();

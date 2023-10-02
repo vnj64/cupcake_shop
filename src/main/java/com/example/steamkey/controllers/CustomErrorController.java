@@ -17,7 +17,6 @@ public class CustomErrorController implements ErrorController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
-//    @Override
     public String getErrorPath() {
         return ERROR_MAPPING;
     }

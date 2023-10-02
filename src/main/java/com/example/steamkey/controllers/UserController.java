@@ -34,7 +34,7 @@ public class UserController {
 
             JwtBuilder jwtBuilder = Jwts.builder();
             jwtBuilder.setClaims(tokenData);
-            String key = "abc123";
+            String key = "StrongKey#1";
             String token = jwtBuilder.signWith(SignatureAlgorithm.HS512, key).compact();
             System.out.println(token);
 
@@ -51,6 +51,13 @@ public class UserController {
     public String profile(Principal principal,
                           Model model) {
         User user = userService.getUserByPrincipal(principal);
+        Map<String, Object> tokenData = new HashMap<>();
+        tokenData.put("userID", user.getUserId().toString());
+        JwtBuilder jwtBuilder = Jwts.builder();
+        jwtBuilder.setClaims(tokenData);
+        String key = "StrongKey#1";
+        String token = jwtBuilder.signWith(SignatureAlgorithm.HS512, key).compact();
+        System.out.println(token);
         model.addAttribute("user", user);
         return "profile";
     }
