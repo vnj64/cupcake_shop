@@ -4,9 +4,9 @@
     <hr>
     <div class="collapse mb-3" id="collapseExample" style="">
         <form action="/product/create" method="post" enctype="multipart/form-data">
-               <div class="form-group">
-                   <label for="productName">Название игры</label>
-                   <input type="text" required class="form-control" id="productName" name="title" oninput="checkTitleLength()">
+               <div class="text-field">
+                   <label for="productName" class="product__label"><b>Название игры</b></label>
+                   <input type="text" required class="product-field__input" id="productName" name="title" oninput="checkTitleLength()">
                    <div id="titleError" style="color: red; display: none;">Название игры не может быть более 20 символов.</div>
                </div>
                <script>
@@ -29,7 +29,7 @@
                        }
                    });
                </script>
-                <div class="form-group">
+                <div class="form-group" style="position: relative;">
                     <label for="price"><b>Цена ключа</b></label>
                     <div class="input-group mb-3">
                         <input type="number" required class="price-input" id="price" name="price" min="0" onkeydown="handleArrowKeys(event)">
@@ -49,7 +49,7 @@
             </div>
             <div class="form-group">
                 <label for="description"><b>Описание игры</b></label>
-                <textarea class="form-control" id="description" name="description" rows="4" oninput="checkDescriptionLength()"></textarea>
+                <textarea class="decription__input" id="description" name="description" rows="4" oninput="checkDescriptionLength()"></textarea>
                 <div id="descriptionError" style="color: red; display: none;">Описание игры не может превышать 300 символов.</div>
             </div>
             <script>

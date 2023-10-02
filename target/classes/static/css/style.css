@@ -182,7 +182,7 @@ body {
     margin-bottom: 0.25rem;
 }
 
-.login__input, .password__input {
+.login__input, .password__input, .product-field__input, .price-input, .decription__input {
     display: block;
     width: 100%;
     height: calc(2.25rem + 2px);
@@ -279,17 +279,15 @@ body {
     background: #da190b;
 }
 
-.price-input {
-    padding: 10px;
-    font: 20px Arial;
-    width: 90%;
-}
-
 .input-group {
-    border: 1px solid;
     border-radius: 2px;
     margin-bottom: 10px;
-    width: 70%;
+}
+
+.input-group-text {
+    position: absolute;
+    top: 30px;
+    right: 35px;
 }
 
 .form-group {
@@ -301,4 +299,13 @@ body {
     flex-direction: column;
     align-items: center;
     margin-bottom: 50px;
+}
+
+.product__label {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+table, th, tr {
+    border: 1px solid;
 }
