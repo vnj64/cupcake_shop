@@ -1,5 +1,6 @@
 package com.example.steamkey.controllers.api;
 
+import com.example.steamkey.common.ProductDTO;
 import com.example.steamkey.models.Product;
 import com.example.steamkey.models.User;
 import com.example.steamkey.services.ProductService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -18,18 +20,43 @@ import java.util.List;
 public class ProductControllerApi {
     private final ProductService productService;
 
-    @GetMapping("/api")
-    public List<Product> productsApi(@RequestParam(name = "searchWord", required = false) String title, Principal principal) {
-        return productService.listProducts(title);
+    @GetMapping("/api/v1/products/all")
+    public ResponseEntity<List<ProductDTO>> getAllProducts() {
+        List<Product> products = productService.getAllProducts();
+        List<ProductDTO> productDTOs = new ArrayList<>();
+
+        for (Product product : products) {
+            ProductDTO productDTO = new ProductDTO();
+            productDTO.setId(product.getId());
+            productDTO.setTitle(product.getTitle());
+            productDTO.setDescription(product.getDescription());
+            productDTO.setKey(product.getKey());
+            productDTO.setArea(product.getArea());
+            productDTO.setPrice(product.getPrice());
+
+            productDTOs.add(productDTO);
+        }
+        if (!productDTOs.isEmpty()) {
+            return new ResponseEntity<>(productDTOs, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
     }
 
     @GetMapping(value = "/api/v1/product/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Product> productInfoApi(@PathVariable Long id, Principal principal) {
+    public ResponseEntity<ProductDTO> productInfoApi(@PathVariable Long id, Principal principal) {
         Product product = productService.getProductById(id);
         if (product == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(product);
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setId(product.getId());
+        productDTO.setTitle(product.getTitle());
+        productDTO.setDescription(product.getDescription());
+        productDTO.setPrice(product.getPrice());
+        productDTO.setArea(product.getArea());
+        productDTO.setKey(product.getKey());
+        return ResponseEntity.ok(productDTO);
     }
 
     @PostMapping("/api/v1/product/create")
@@ -48,9 +75,9 @@ public class ProductControllerApi {
     }
 
     @GetMapping("/api/v1/my/products")
-    public ResponseEntity userProductsApi(Principal principal) {
+    public List<Product> userProductsApi(Principal principal) {
         User user = productService.getUserByPrincipal(principal);
-        return ResponseEntity.ok(user.getProducts());
+        return user.getProducts();
     }
 
     @ExceptionHandler(IOException.class)

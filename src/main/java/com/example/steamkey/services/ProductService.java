@@ -7,6 +7,7 @@ import com.example.steamkey.repositories.ProductRepository;
 import com.example.steamkey.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.parameters.P;
@@ -30,6 +31,10 @@ public class ProductService {
 
     public List<Product> listProducts(String title) {
         if (title != null) return productRepository.findByTitle(title);
+        return productRepository.findAll();
+    }
+
+    public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
 

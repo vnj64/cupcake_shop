@@ -22,6 +22,7 @@ import java.util.Map;
 public class ProductController {
     private final ProductService productService;
 
+    @Autowired
     private ProductRepository productRepository;
 
 
@@ -51,7 +52,7 @@ public class ProductController {
         return "redirect:/my/products";
     }
 
-    @PostMapping(value = "/product/delete/{id}")
+    @RequestMapping(value = "/product/delete/{id}", method = RequestMethod.DELETE)
     public String deleteProduct(@PathVariable Long id, Principal principal) {
         productService.deleteProduct(productService.getUserByPrincipal(principal), id);
         return "redirect:/my/products";

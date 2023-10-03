@@ -43,7 +43,7 @@ public class Product {
         return user;
     }
 
-    public Object getTitle() {
+    public String getTitle() {
         return title;
     }
 

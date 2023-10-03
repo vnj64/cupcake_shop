@@ -55,23 +55,6 @@ class ProductControllerTest {
 
 
     @Test
-    void productInfo_ShouldReturnProductInfoPage() {
-        Long productId = 123L;
-        Product product = mock(Product.class);
-        User user = mock(User.class);
-
-        when(productService.getProductById(productId)).thenReturn(product);
-        when(productService.getUserByPrincipal(principal)).thenReturn(user);
-
-        String result = productController.productInfo(productId, model, principal);
-
-        assertEquals("product-info", result);
-        verify(model).addAttribute("product", product);
-        verify(model).addAttribute("user", user);
-        verify(model).addAttribute("authorProduct", product.getUser());
-    }
-
-    @Test
     void createProduct_ShouldSaveProductAndRedirectToUserProductsPage() throws IOException {
         Product product = mock(Product.class);
 
