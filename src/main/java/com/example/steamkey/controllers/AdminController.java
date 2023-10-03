@@ -21,10 +21,6 @@ import java.util.Map;
 public class AdminController {
     private final UserService userService;
 
-
-//    public AdminController(UserService userService) {
-//    }
-
     @GetMapping("/admin")
     public String admin(Model model, Principal principal) {
         model.addAttribute("users", userService.list());
@@ -50,8 +46,5 @@ public class AdminController {
     public String userEdit(@RequestParam("userId") User user, @RequestParam Map<String, String> form) {
         userService.changeUserRoles(user, form);
         return "redirect:/admin";
-    }
-
-    public void setUserService(UserService userService) {
     }
 }

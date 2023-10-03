@@ -22,7 +22,6 @@ import java.util.Map;
 public class ProductController {
     private final ProductService productService;
 
-    @Autowired
     private ProductRepository productRepository;
 
 

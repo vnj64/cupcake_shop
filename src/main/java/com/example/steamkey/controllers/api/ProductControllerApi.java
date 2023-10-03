@@ -48,9 +48,9 @@ public class ProductControllerApi {
     }
 
     @GetMapping("/api/v1/my/products")
-    public List<Product> userProductsApi(Principal principal) {
+    public ResponseEntity userProductsApi(Principal principal) {
         User user = productService.getUserByPrincipal(principal);
-        return user.getProducts();
+        return ResponseEntity.ok(user.getProducts());
     }
 
     @ExceptionHandler(IOException.class)

@@ -1,12 +1,10 @@
 package com.example.steamkey.models;
 
 import com.example.steamkey.models.enums.Role;
-import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.*;
@@ -32,6 +30,7 @@ public class User implements UserDetails {
     @Column(length = 1000)
     private String password;
 
+
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"))
@@ -41,6 +40,7 @@ public class User implements UserDetails {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,
             mappedBy = "user")
     private List<Product> products = new ArrayList<>();
+
 
     public void addProductToUser(Product product) {
         product.setUser(this);
