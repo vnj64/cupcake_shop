@@ -1,11 +1,11 @@
 <h1 align="center">Games Key Shop</h1>
 
 ## Description.
-The project is written in the Java programming language using the Spring Boot framework. PostgreSQL is used as a database. Register and start selling your products!
+The project is written in the **Java** programming language using the **Spring Boot** framework. **PostgreSQL** is used as a database. Register and start selling your products!
 
 ## About the project.
 - Shop implemented with [Java](https://www.oracle.com/java/) and [Spring Boot](https://spring.io/projects/spring-boot) backend framework.
-- On frontend you can find an ".ftlh" expansion. With FTLH you can create a java code into html file. More info [HERE](https://websparrow.org/spring/spring-boot-freemarker-example).
+- On frontend you can find an ".ftlh" expansion. With **FTLH** you can create a java code into html file. More info [HERE](https://websparrow.org/spring/spring-boot-freemarker-example).
 
 ## Contributor.
 - [vnJ64](https://github.com/vnj64)
@@ -30,4 +30,4 @@ javac MainApplication.java
 java MainApplication
 ```
 
-Good luck ✅!
+**Good luck ✅!**
