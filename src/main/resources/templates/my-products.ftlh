@@ -83,7 +83,7 @@
             <a href="/product/${product.id}" class="product-link">
                 <div class="card text-white bg-dark my-3 product">
                     <div class="card-top">
-                        <form action="/product/delete/${product.id}" method="POST">
+                        <form action="/product/delete/${product.id}" method="delete">
                             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                             <button type="submit" class="btn btn-danger m-3">
                                 Удалить

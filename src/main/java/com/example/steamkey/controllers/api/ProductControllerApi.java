@@ -3,11 +3,13 @@ package com.example.steamkey.controllers.api;
 import com.example.steamkey.common.ProductDTO;
 import com.example.steamkey.models.Product;
 import com.example.steamkey.models.User;
+import com.example.steamkey.repositories.ProductRepository;
 import com.example.steamkey.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -19,8 +21,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductControllerApi {
     private final ProductService productService;
+    private final ProductRepository productRepository;
 
-    @GetMapping("/api/v1/products/all")
+    @GetMapping(value = "/api/v1/products/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ProductDTO>> getAllProducts() {
         List<Product> products = productService.getAllProducts();
         List<ProductDTO> productDTOs = new ArrayList<>();
@@ -37,9 +40,9 @@ public class ProductControllerApi {
             productDTOs.add(productDTO);
         }
         if (!productDTOs.isEmpty()) {
-            return new ResponseEntity<>(productDTOs, HttpStatus.OK);
+            return ResponseEntity.ok(productDTOs);
         } else {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return ResponseEntity.notFound().build();
         }
     }
 
@@ -61,17 +64,13 @@ public class ProductControllerApi {
 
     @PostMapping("/api/v1/product/create")
     public ResponseEntity<Void> createProductApi(@RequestBody Product product, Principal principal) {
-        try {
-            productService.saveProduct(principal, product);
-            return ResponseEntity.status(HttpStatus.CREATED).build();
-        } catch (IOException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+        productRepository.save(product);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @DeleteMapping("/api/v1/product/delete/{id}")
     public void deleteProduct(@PathVariable Long id, Principal principal) {
-        productService.deleteProduct(productService.getUserByPrincipal(principal), id);
+        productRepository.deleteById(id);
     }
 
     @GetMapping("/api/v1/my/products")

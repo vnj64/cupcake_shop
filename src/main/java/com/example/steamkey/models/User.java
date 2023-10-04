@@ -3,6 +3,8 @@ package com.example.steamkey.models;
 import com.example.steamkey.models.enums.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

@@ -14,7 +14,6 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
@@ -28,7 +27,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/", "/product/**", "/images/**", "/registration", "/user/**", "/static/**",
-                        "/api/v1/product/**", "/api", "/api/users/login", "/api/users/**", "/api/users/user/{user}")
+                        "/api/v1/product/**", "/api", "/api/users/login", "/api/users/**",
+                        "/api/users/user/{user}", "/api/v1/products/all", "/api/v1/product/delete/**")
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()

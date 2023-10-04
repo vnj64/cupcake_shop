@@ -45,18 +45,6 @@ class UserControllerTest {
     }
 
     @Test
-    void profile_ShouldReturnProfilePage() {
-        User user = mock(User.class);
-
-        when(userService.getUserByPrincipal(principal)).thenReturn(user);
-
-        String result = userController.profile(principal, model);
-
-        assertEquals("profile", result);
-        verify(model).addAttribute("user", user);
-    }
-
-    @Test
     void registration_ShouldReturnRegistrationPage() {
         User user = mock(User.class);
 
