@@ -25,9 +25,8 @@ spring.datasource.url=jdbc:postgresql://localhost:{port}/{postgres_user}
 spring.datasource.username={postgres_user}
 spring.datasource.password={postgres_password}
 
-# Run MainApplication file and be happy 😁!
-javac MainApplication.java
-java MainApplication
+# Run Maven and be happy 😁!
+./mvnw spring-boot:run
 ```
 
 **Good luck ✅!**
