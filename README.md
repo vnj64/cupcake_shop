@@ -29,4 +29,16 @@ spring.datasource.password={postgres_password}
 ./mvnw spring-boot:run
 ```
 
+## API routes.
+```
+# All products.
+localhost:8080/api/v1/products/all
+
+# Unique product.
+localhost:8080/api/v1/product/{product_id}
+
+# User registration (Body request).
+localhost:8080/api/users/registration
+```
+
 **Good luck ✅!**
